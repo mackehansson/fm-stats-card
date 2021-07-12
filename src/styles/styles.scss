@@ -1,0 +1,179 @@
+:root {
+    --color-very-dark-blue: hsl(233, 47%, 7%);
+    --color-dark-desaturated-blue: hsl(244, 38%, 16%);
+    --color-soft-violet: hsl(277, 64%, 61%);
+
+    --color-white: hsl(0, 0%, 100%);
+    --color-slightly-transparent-white: hsla(0, 0%, 100%, 0.75);
+    --color-slightly-transparent-white-alt: hsla(0, 0%, 100%, 0.6);
+
+    --main-bg: var(--color-very-dark-blue);
+    --card-background: var(--color-dark-desaturated-blue);
+    --accent: var(--color-soft-violet);
+
+    --main-heading-color: var(--color-white);
+    --stats-color: var(--color-white);
+    --main-paragraph-color: var(--color-slightly-transparent-white);
+    --stat-heading-color: var(--color-slightly-transparent-white-alt);
+
+    --font-family-1: "Inter", sans-serif;
+    --font-family-2: "Lexend Deca", sans-serif;
+
+    --border-radius-size: 8px;
+}
+
+html {
+    font-size: 15px;
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background: var(--main-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-2);
+    color: var(--color-white);
+}
+
+.stat-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 240px 1fr;
+    grid-template-areas: "image" "content";
+    background: var(--card-background);
+    max-width: 1110px;
+    border-radius: var(--border-radius-size);
+    margin-left: 24px;
+    margin-right: 24px;
+
+    @media (min-width: 1440px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: "content image";
+    }
+
+    &__wrapper {
+        flex: 1;
+        padding: 40px 32px;
+        grid-area: content;
+
+        @media (min-width: 1440px) {
+            padding: 70px 70px 60px 70px;
+        }
+    }
+
+    &__title {
+        margin-bottom: 30px;
+
+        h1 {
+            font-family: var(--font-family-1);
+            color: var(--main-heading-color);
+            font-size: 28px;
+            line-height: 32px;
+            font-weight: 700;
+            text-align: center;
+
+            .highlight {
+                color: var(--accent);
+            }
+
+            @media (min-width: 1440px) {
+                text-align: left;
+                font-size: 40px;
+                line-height: 48px;
+            }
+        }
+    }
+
+    &__content {
+        @media (min-width: 1440px) {
+            max-width: 90%;
+        }
+    }
+
+    &__description {
+        color: var(--main-paragraph-color);
+        font-family: var(--font-family-1);
+        font-weight: 400;
+        margin-bottom: 40px;
+        font-size: 15px;
+        line-height: 24px;
+        text-align: center;
+
+        @media (min-width: 1440px) {
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: 1440px) {
+            text-align: left;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width: 1440px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    &__stat {
+        text-align: center;
+        margin-bottom: 32px;
+
+        @media (min-width: 1440px) {
+            text-align: left;
+            margin-bottom: 0;
+        }
+    }
+
+    &__stat-title {
+        color: var(--stat-heading-color);
+        font-family: var(--font-family-1);
+        text-transform: uppercase;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    &__stat-content {
+        color: var(--stats-color);
+        font-family: var(--font-family-1);
+        font-weight: 700;
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    &__image {
+        grid-area: image;
+        position: relative;
+        background: var(--accent);
+        background-image: url("../images/image-header-mobile.jpg");
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        background-size: cover;
+
+        border-top-left-radius: var(--border-radius-size);
+        border-top-right-radius: var(--border-radius-size);
+
+        @media (min-width: 1440px) {
+            background-image: url("../images/image-header-desktop.jpg");
+            border-top-left-radius: 0;
+            border-bottom-right-radius: var(--border-radius-size);
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
